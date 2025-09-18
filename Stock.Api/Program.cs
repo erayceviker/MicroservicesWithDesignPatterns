@@ -23,16 +23,16 @@ builder.Services.AddDbContext<AppDbContext>(options => { options.UseInMemoryData
             e.ConfigureConsumer<OrderCreatedEventConsumer>(ctx);
         });
 
-
-        cfg.ReceiveEndpoint(RabbitMqSettingsConst.StockPaymentFailEventQueueName, e =>
+        cfg.ReceiveEndpoint(RabbitMqSettingsConst.StockRollBackMessageQueueName, e =>
         {
-            e.ConfigureConsumer<PaymentFailEventConsumer>(ctx);
+            e.ConfigureConsumer<StockRollBackMessageConsumer>(ctx);
         });
     });
 
-
     opt.AddConsumer<OrderCreatedEventConsumer>();
-    opt.AddConsumer<PaymentFailEventConsumer>();
+
+    opt.AddConsumer<StockRollBackMessageConsumer>();
+
 });
 
 var app = builder.Build();

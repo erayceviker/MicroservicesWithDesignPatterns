@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36408.4 d17.14
+VisualStudioVersion = 17.14.36408.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Order.Api", "Order.Api\Order.Api.csproj", "{2D9EA4E9-98DA-49AD-B133-60B1F0DEC9EF}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payment.Api", "Payment.Api\Payment.Api.csproj", "{3A650C30-C528-4A49-83EB-F66543729807}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{F1EFFC10-E38A-43E7-8260-AA61B2778E38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SagaStateMachineWorkerService", "SagaStateMachineWorkerService\SagaStateMachineWorkerService.csproj", "{280D2944-C686-4AF5-ADE3-4DB60B72D9CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{F1EFFC10-E38A-43E7-8260-AA61B2778E38}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1EFFC10-E38A-43E7-8260-AA61B2778E38}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1EFFC10-E38A-43E7-8260-AA61B2778E38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{280D2944-C686-4AF5-ADE3-4DB60B72D9CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{280D2944-C686-4AF5-ADE3-4DB60B72D9CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{280D2944-C686-4AF5-ADE3-4DB60B72D9CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{280D2944-C686-4AF5-ADE3-4DB60B72D9CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,19 +1,20 @@
 ﻿using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using Order.Api.Models;
-using Shared;
+using Shared.Interfaces;
 
 namespace Order.Api.Consumers
 {
-    public class PaymentCompletedEventConsumer(AppDbContext appDbContext,ILogger<PaymentCompletedEventConsumer> logger) : IConsumer<PaymentCompletedEvent>
+    public class OrderRequestFailedEventConsumer(AppDbContext appDbContext, ILogger<OrderRequestFailedEventConsumer> logger) : IConsumer<IOrderRequestFailedEvent>
     {
-        public async Task Consume(ConsumeContext<PaymentCompletedEvent> context)
+        public async Task Consume(ConsumeContext<IOrderRequestFailedEvent> context)
         {
             var order = await appDbContext.Orders.FirstOrDefaultAsync(x => x.Id == context.Message.OrderId);
 
             if (order is not null)
             {
-                order.Status = OrderStatus.Completed;
+                order.Status = OrderStatus.Fail;
+                order.FailMessage = context.Message.FailMessage;
 
                 await appDbContext.SaveChangesAsync();
 

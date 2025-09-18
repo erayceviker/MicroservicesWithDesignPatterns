@@ -1,20 +1,19 @@
 ﻿using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using Order.Api.Models;
-using Shared;
+using Shared.Interfaces;
 
 namespace Order.Api.Consumers
 {
-    public class StockNotReservedEventConsumer(AppDbContext appDbContext,ILogger<StockNotReservedEventConsumer> logger) : IConsumer<StockNotReservedEvent>
+    public class OrderRequestCompletedEventConsumer(AppDbContext appDbContext, ILogger<OrderRequestCompletedEventConsumer> logger) : IConsumer<IOrderRequestCompletedEvent>
     {
-        public async Task Consume(ConsumeContext<StockNotReservedEvent> context)
+        public async Task Consume(ConsumeContext<IOrderRequestCompletedEvent> context)
         {
             var order = await appDbContext.Orders.FirstOrDefaultAsync(x => x.Id == context.Message.OrderId);
 
             if (order is not null)
             {
-                order.Status = OrderStatus.Fail;
-                order.FailMessage = context.Message.FailMessage;
+                order.Status = OrderStatus.Completed;
 
                 await appDbContext.SaveChangesAsync();
 
